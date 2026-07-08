@@ -8,7 +8,9 @@ EXTENSIONS = [
     "cogs.rank",
     "cogs.tracker",
     "cogs.player",
-    "cogs.watcher"
+    "cogs.watcher",
+    "cogs.summary",
+    "cogs.agentstats",
 ]
 
 

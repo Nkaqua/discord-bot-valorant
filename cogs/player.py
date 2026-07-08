@@ -2,6 +2,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
+from utils.player_autocomplete import saved_player_alias_autocomplete
 from utils.player_store import save_player, list_players, delete_player
 
 
@@ -70,6 +71,7 @@ class PlayerCog(commands.Cog):
     @app_commands.describe(
         alias="削除したい保存名です。例: me, friend, duo",
     )
+    @app_commands.autocomplete(alias=saved_player_alias_autocomplete)
     async def deleteplayer(
         self,
         interaction: discord.Interaction,

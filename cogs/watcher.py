@@ -4,6 +4,7 @@ from discord import app_commands
 from discord.ext import commands, tasks
 
 from config import HENRIK_API_KEY, VALORANT_REGION
+from utils.player_autocomplete import saved_player_alias_autocomplete
 from utils.player_store import list_players
 from utils.watcher_store import (
     load_watchers,
@@ -31,6 +32,7 @@ class WatcherCog(commands.Cog):
     @app_commands.describe(
         alias="保存済みプレイヤー名です。例: me, friend, duo",
     )
+    @app_commands.autocomplete(alias=saved_player_alias_autocomplete)
     async def watchplayer(self, interaction: discord.Interaction, alias: str):
         players = list_players(interaction.user.id)
 

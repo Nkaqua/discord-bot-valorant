@@ -7,6 +7,7 @@ from discord.ext import commands
 from config import VALORANT_NAME, VALORANT_TAG
 from services.henrik import fetch_account, fetch_recent_competitive_matches_by_puuid
 from utils.valorant_stats import extract_one_match_summary, debug_match_players
+from utils.player_autocomplete import saved_player_alias_autocomplete
 from utils.player_resolver import resolve_player
 
 class TrackerCog(commands.Cog):
@@ -22,6 +23,7 @@ class TrackerCog(commands.Cog):
     tag="Valorantのタグを入力します。例: JP1",
     alias="保存済みプレイヤーの名前です。例: me, friend",
     )
+    @app_commands.autocomplete(alias=saved_player_alias_autocomplete)
     async def tracker(
     self,
     interaction: discord.Interaction,

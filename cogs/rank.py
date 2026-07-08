@@ -6,6 +6,7 @@ from discord.ext import commands
 
 from config import VALORANT_NAME, VALORANT_TAG
 from services.henrik import fetch_valorant_rank
+from utils.player_autocomplete import saved_player_alias_autocomplete
 from utils.player_resolver import resolve_player
 
 
@@ -22,6 +23,7 @@ class RankCog(commands.Cog):
     tag="Valorantのタグを入力します。例: JP1",
     alias="保存済みプレイヤーの名前です。例: me, friend",
     )
+    @app_commands.autocomplete(alias=saved_player_alias_autocomplete)
     async def rank(
     self,
     interaction: discord.Interaction,
